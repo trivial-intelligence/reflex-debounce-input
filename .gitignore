@@ -1,0 +1,9 @@
+__pycache__
+*.egg-info
+
+.coverage
+.coverage.*
+.tox/
+build/
+example/backend.zip
+example/frontend.zip
