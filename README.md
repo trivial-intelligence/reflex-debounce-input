@@ -46,7 +46,7 @@ pc init
 pc run
 ```
 
-Also work with textarea, simply pass `pc.text_area` as the child.
+Also work with textarea, simply pass `pc.text_area` as the child. See [larger example](./example) in the repo.
 
 ## Usage
 
@@ -62,12 +62,12 @@ config = pc.Config(
 )
 ```
 
-3. Use the `pynecone_debounce_input.debounce_input` component where you would
-  otherwise use a `pc.input` or `pc.text_area`
+3. Wrap `pynecone_debounce_input.debounce_input` around the component
+   to debounce (typically a `pc.input` or `pc.text_area`).
 
 ### Props
 
-See documentation for `react-debounce-input`.
+See documentation for [`react-debounce-input`](https://www.npmjs.com/package/react-debounce-input).
 
 #### `min_length: int = 0`
 
