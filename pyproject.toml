@@ -16,8 +16,8 @@ requires-python = ">=3.7"
 license = {file = "LICENSE"}
 classifiers = [
     'Development Status :: 4 - Beta',
-    'Framework :: Pynecone',
-    'Framework :: Pynecone :: 0.1',
+    # 'Framework :: Pynecone',
+    # 'Framework :: Pynecone :: 0.1',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: MIT License',
     'Operating System :: POSIX',
@@ -26,7 +26,7 @@ classifiers = [
     'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     'Topic :: Software Development :: Libraries',
     'Topic :: Utilities',
-    'Programming Language :: Javascript',
+    # 'Programming Language :: Javascript',
     'Programming Language :: Python',
 ]
 dynamic = ["version", "readme"]
