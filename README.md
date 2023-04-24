@@ -29,7 +29,7 @@ def index():
         pc.hstack(
             debounce_input(
                 pc.input(
-                    placeholder="Query"
+                    placeholder="Query",
                     value=State.query,
                     on_change=State.set_query,
                 ),
