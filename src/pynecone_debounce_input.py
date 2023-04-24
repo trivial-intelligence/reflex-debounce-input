@@ -48,3 +48,17 @@ debounce_input = DebounceInput.create
 def props_not_none(c: pc.Component) -> dict[str, Any]:
     cdict = {a: getattr(c, a) for a in c.get_props() if getattr(c, a, None) is not None}
     return cdict
+
+
+def ensure_frontend_package():
+    from pynecone.config import get_config
+
+    config = get_config()
+    for frontend_package in config.frontend_packages:
+        if frontend_package.partition("@")[0].strip() == "react-debounce-input":
+            return
+    config.frontend_packages.append("react-debounce-input")
+
+
+# ensure that all users of this module have it available
+ensure_frontend_package()
