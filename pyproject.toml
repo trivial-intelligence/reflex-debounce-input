@@ -31,7 +31,7 @@ classifiers = [
 ]
 dynamic = ["version", "readme"]
 dependencies = [
-    'pynecone ~= 0.1.24',
+    'pynecone ~= 0.1.30',
 ]
 
 [project.urls]

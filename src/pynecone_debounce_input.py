@@ -5,7 +5,7 @@ from typing import Any
 import pynecone as pc
 
 from pynecone.components.tags import Tag
-from pynecone.var import Var
+from pynecone.vars import Var
 
 
 class DebounceInput(pc.Component):
