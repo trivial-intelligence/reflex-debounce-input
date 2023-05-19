@@ -89,6 +89,10 @@ Same as `force_notify_by_enter`, but notification will be sent when focus leaves
 
 ## Changelog
 
+### v0.3 - 2023-05-19
+
+* Support pynecone >= 0.1.30 (`pynecone.var` changed to `pynecone.vars`)
+
 ### v0.2 - 2023-04-24
 
 * `import pynecone_debounce_input` automatically adds `react-debounce-input` to `Config.frontend_packages`
