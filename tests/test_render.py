@@ -1,7 +1,7 @@
 import pytest
 
 import pynecone as pc
-from pynecone.var import BaseVar
+from pynecone.vars import BaseVar
 
 from pynecone_debounce_input import debounce_input
 
