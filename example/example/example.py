@@ -1,24 +1,24 @@
 from __future__ import annotations
 
-import pynecone as pc
+import reflex as rx
 
-from pynecone_debounce_input import debounce_input
+from reflex_debounce_input import debounce_input
 
 
-class State(pc.State):
+class State(rx.State):
     debounce_timeout: int = 500
     query: str = ""
     checked: bool = False
 
 
-app = pc.App(state=State)
+app = rx.App(state=State)
 
 
-def debounce_controls() -> pc.Box:
-    return pc.box(
-        pc.text("Debounce Controls"),
-        pc.text("debounce_timeout=", State.debounce_timeout),
-        pc.slider(
+def debounce_controls() -> rx.Box:
+    return rx.box(
+        rx.text("Debounce Controls"),
+        rx.text("debounce_timeout=", State.debounce_timeout),
+        rx.slider(
             min_=0,
             max_=5000,
             value=State.debounce_timeout,
@@ -27,12 +27,12 @@ def debounce_controls() -> pc.Box:
     )
 
 
-def input_items() -> tuple[pc.GridItem, pc.GridItem]:
+def input_items() -> tuple[rx.GridItem, rx.GridItem]:
     return (
-        pc.grid_item(
-            pc.heading("Input"),
+        rx.grid_item(
+            rx.heading("Input"),
             debounce_input(
-                pc.input(
+                rx.input(
                     placeholder="Query",
                     value=State.query,
                     on_change=State.set_query,
@@ -40,19 +40,19 @@ def input_items() -> tuple[pc.GridItem, pc.GridItem]:
                 debounce_timeout=State.debounce_timeout,
             ),
         ),
-        pc.grid_item(
-            pc.heading("Value"),
-            pc.text(State.query),
+        rx.grid_item(
+            rx.heading("Value"),
+            rx.text(State.query),
         ),
     )
 
 
-def textarea_items() -> tuple[pc.GridItem, pc.GridItem]:
+def textarea_items() -> tuple[rx.GridItem, rx.GridItem]:
     return (
-        pc.grid_item(
-            pc.heading("Textarea"),
+        rx.grid_item(
+            rx.heading("Textarea"),
             debounce_input(
-                pc.text_area(
+                rx.text_area(
                     placeholder="Query (min_length=5)",
                     value=State.query,
                     on_change=State.set_query,
@@ -61,41 +61,41 @@ def textarea_items() -> tuple[pc.GridItem, pc.GridItem]:
                 min_length=5,
             ),
         ),
-        pc.grid_item(
-            pc.heading("Value"),
-            pc.text(State.query),
+        rx.grid_item(
+            rx.heading("Value"),
+            rx.text(State.query),
         ),
     )
 
 
-def checkbox_items() -> tuple[pc.GridItem, pc.GridItem]:
+def checkbox_items() -> tuple[rx.GridItem, rx.GridItem]:
     return (
-        pc.grid_item(
-            pc.heading("Checkbox"),
+        rx.grid_item(
+            rx.heading("Checkbox"),
             debounce_input(
-                pc.checkbox(
+                rx.checkbox(
                     value=State.checked,
                     on_change=State.set_checked,
                 ),
                 debounce_timeout=State.debounce_timeout,
             ),
         ),
-        pc.grid_item(
-            pc.heading("Value"),
-            pc.cond(
+        rx.grid_item(
+            rx.heading("Value"),
+            rx.cond(
                 State.checked,
-                pc.text("Box is Checked"),
+                rx.text("Box is Checked"),
             ),
         ),
     )
 
 
 @app.add_page
-def index() -> pc.Component:
-    return pc.center(
-        pc.vstack(
+def index() -> rx.Component:
+    return rx.center(
+        rx.vstack(
             debounce_controls(),
-            pc.grid(
+            rx.grid(
                 *input_items(),
                 *textarea_items(),
                 *checkbox_items(),

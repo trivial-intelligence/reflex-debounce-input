@@ -1,9 +1,9 @@
 import pytest
 
-import pynecone as pc
-from pynecone.vars import BaseVar
+import reflex as rx
+from reflex.vars import BaseVar
 
-from pynecone_debounce_input import debounce_input
+from reflex_debounce_input import debounce_input
 
 
 def test_render_no_child():
@@ -12,12 +12,12 @@ def test_render_no_child():
 
 
 def test_render_child_props():
-    class S(pc.State):
+    class S(rx.State):
         def on_change(self, v: str):
             pass
 
     tag = debounce_input(
-        pc.input(
+        rx.input(
             foo="bar",
             baz="quuc",
             value="real",

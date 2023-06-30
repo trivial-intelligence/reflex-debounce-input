@@ -2,13 +2,13 @@ from __future__ import annotations
 
 from typing import Any
 
-import pynecone as pc
+import reflex as rx
 
-from pynecone.components.tags import Tag
-from pynecone.vars import Var
+from reflex.components.tags import Tag
+from reflex.vars import Var
 
 
-class DebounceInput(pc.Component):
+class DebounceInput(rx.Component):
     library = "react-debounce-input"
     tag = "DebounceInput"
     min_length: Var[int] = 0
@@ -25,7 +25,7 @@ class DebounceInput(pc.Component):
         """
         if not self.children:
             raise RuntimeError(
-                "Provide a child for DebounceInput, such as pc.input() or pc.text_area()",
+                "Provide a child for DebounceInput, such as rx.input() or rx.text_area()",
             )
         child = self.children[0]
         tag = super()._render()
@@ -45,13 +45,13 @@ class DebounceInput(pc.Component):
 debounce_input = DebounceInput.create
 
 
-def props_not_none(c: pc.Component) -> dict[str, Any]:
+def props_not_none(c: rx.Component) -> dict[str, Any]:
     cdict = {a: getattr(c, a) for a in c.get_props() if getattr(c, a, None) is not None}
     return cdict
 
 
 def ensure_frontend_package():
-    from pynecone.config import get_config
+    from reflex.config import get_config
 
     config = get_config()
     for frontend_package in config.frontend_packages:

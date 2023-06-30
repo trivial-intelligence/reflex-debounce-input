@@ -7,8 +7,8 @@ requires = [
 build-backend = 'setuptools.build_meta'
 
 [project]
-name = "pynecone-debounce-input"
-description = "Pynecone full-stack framework wrapper around react-debounce-input"
+name = "reflex-debounce-input"
+description = "Reflex full-stack framework wrapper around react-debounce-input"
 authors = [
     {name = "Masen Furer", email = "m_github@0x26.net"},
 ]
@@ -16,8 +16,8 @@ requires-python = ">=3.7"
 license = {file = "LICENSE"}
 classifiers = [
     'Development Status :: 4 - Beta',
-    # 'Framework :: Pynecone',
-    # 'Framework :: Pynecone :: 0.1',
+    # 'Framework :: Reflex',
+    # 'Framework :: Reflex :: 0.1',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: MIT License',
     'Operating System :: POSIX',
@@ -31,11 +31,11 @@ classifiers = [
 ]
 dynamic = ["version", "readme"]
 dependencies = [
-    'pynecone ~= 0.1.30',
+    'reflex ~= 0.2.0',
 ]
 
 [project.urls]
-Homepage = "https://github.com/trivial-intelligence/pynecone-debounce-input"
+Homepage = "https://github.com/trivial-intelligence/reflex-debounce-input"
 
 [tool.setuptools]
 platforms = ['unix', 'linux', 'osx', 'cygwin', 'win32']

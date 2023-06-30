@@ -1,8 +1,8 @@
-import pynecone as pc
+import reflex as rx
 
-config = pc.Config(
+config = rx.Config(
     app_name="example",
     db_url="sqlite:///pynecone.db",
-    env=pc.Env.DEV,
+    env=rx.Env.DEV,
     frontend_packages=[],
 )
