@@ -36,7 +36,7 @@ def pin_deps(request, example_project):
 
 
 def test_export_example(example_project, pin_deps):
-    _ = subprocess.run(["pc", "init"], cwd=example_project, check=True)
+    _ = subprocess.run(["reflex", "init"], cwd=example_project, check=True)
     # hack to ensure frontend packages get generated pynecone-io/pynecone#814
     _ = subprocess.run(
         [
@@ -48,7 +48,7 @@ def test_export_example(example_project, pin_deps):
         cwd=example_project,
         check=True,
     )
-    _ = subprocess.run(["pc", "export"], cwd=example_project, check=True)
+    _ = subprocess.run(["reflex", "export"], cwd=example_project, check=True)
     assert (example_project / "frontend.zip").exists()
     assert (example_project / "backend.zip").exists()
 

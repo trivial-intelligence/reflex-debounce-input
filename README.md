@@ -42,8 +42,8 @@ app.compile()
 ```
 
 ```console
-pc init
-pc run
+reflex init
+reflex run
 ```
 
 Also work with textarea, simply pass `rx.text_area` as the child. See [larger example](./example) in the repo.
