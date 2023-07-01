@@ -4,10 +4,10 @@ import subprocess
 import sys
 from unittest import mock
 
-import pynecone.config
+import reflex.config
 import pytest
 
-import pynecone_debounce_input
+import reflex_debounce_input
 
 
 @pytest.fixture
@@ -23,7 +23,7 @@ def pin_deps(request, example_project):
     if request.param:
         new_config = []
         for config_line in (
-            (example_project / "pcconfig.py").read_text().splitlines(True)
+            (example_project / "rxconfig.py").read_text().splitlines(True)
         ):
             new_config.append(
                 config_line.replace(
@@ -31,24 +31,24 @@ def pin_deps(request, example_project):
                     "frontend_packages=['react-debounce-input@3.3.0']",
                 )
             )
-        (example_project / "pcconfig.py").write_text("".join(new_config))
+        (example_project / "rxconfig.py").write_text("".join(new_config))
     return request.param
 
 
 def test_export_example(example_project, pin_deps):
-    _ = subprocess.run(["pc", "init"], cwd=example_project, check=True)
+    _ = subprocess.run(["reflex", "init"], cwd=example_project, check=True)
     # hack to ensure frontend packages get generated pynecone-io/pynecone#814
     _ = subprocess.run(
         [
             sys.executable,
             "-c",
-            "import pynecone_debounce_input; "
-            "from pynecone.utils.prerequisites import install_frontend_packages as f; f('.web')",
+            "import reflex_debounce_input; "
+            "from reflex.utils.prerequisites import install_frontend_packages as f; f('.web')",
         ],
         cwd=example_project,
         check=True,
     )
-    _ = subprocess.run(["pc", "export"], cwd=example_project, check=True)
+    _ = subprocess.run(["reflex", "export"], cwd=example_project, check=True)
     assert (example_project / "frontend.zip").exists()
     assert (example_project / "backend.zip").exists()
 
@@ -67,8 +67,8 @@ def test_export_example(example_project, pin_deps):
     ],
 )
 def test_ensure_frontend_package(monkeypatch, frontend_packages, exp_frontend_packages):
-    config = pynecone.config.get_config()
+    config = reflex.config.get_config()
     config.frontend_packages = frontend_packages
-    monkeypatch.setattr(pynecone.config, "get_config", mock.Mock(return_value=config))
-    pynecone_debounce_input.ensure_frontend_package()
+    monkeypatch.setattr(reflex.config, "get_config", mock.Mock(return_value=config))
+    reflex_debounce_input.ensure_frontend_package()
     assert config.frontend_packages == exp_frontend_packages
