@@ -1,5 +1,11 @@
 # reflex-debounce-input
 
+## This functionality is now built in to Reflex itself
+
+As a result, this repo is now archived.
+
+-------------------
+
 [![main branch test status](https://github.com/trivial-intelligence/reflex-debounce-input/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/trivial-intelligence/reflex-debounce-input/actions/workflows/test.yml?query=branch%3Amain)
 [![PyPI version](https://badge.fury.io/py/reflex-debounce-input.svg)](https://pypi.org/project/reflex-debounce-input)
 
